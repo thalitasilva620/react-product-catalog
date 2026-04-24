@@ -14,6 +14,8 @@ Um catálogo de produtos moderno desenvolvido com React, consumindo dados de uma
 
 ![Preview do projeto dekstop](./screenshots.png)
 
+---
+
 ![Preview do projeto mobile](./screenshots-mobile.png)
 
 ---
