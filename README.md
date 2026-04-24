@@ -1,73 +1,117 @@
-# React + TypeScript + Vite
+# 🛍️ React Product Catalog
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Um catálogo de produtos moderno desenvolvido com React, consumindo dados de uma API externa e exibindo produtos em um layout responsivo estilo e-commerce.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Demo
 
-## React Compiler
+🔗 [Repositório no GitHub](https://github.com/thalitasilva620/react-product-catalog)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## 📸 Preview
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+![Preview do projeto dekstop](./screenshots.png)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+![Preview do projeto mobile](./screenshots-mobile.png)
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## 🧠 Sobre o projeto
+
+Este projeto foi desenvolvido com o objetivo de praticar:
+
+* Consumo de API REST
+* Gerenciamento de estado com React Hooks
+* Filtro e busca dinâmica de dados
+* Criação de interfaces modernas com TailwindCSS
+* Componentização e organização de código
+
+Os produtos são carregados dinamicamente utilizando a Fake Store API, permitindo simular um ambiente real de e-commerce.
+
+---
+
+## 🛠️ Tecnologias utilizadas
+
+* React
+* TypeScript
+* TailwindCSS
+* Vite
+* Fake Store API
+
+---
+
+## ✨ Funcionalidades
+
+* 🔍 Busca de produtos por nome
+* 🗂️ Filtro por categoria
+* 🧾 Listagem dinâmica de produtos
+* 📱 Layout responsivo
+* 🎨 Interface moderna com TailwindCSS
+
+---
+
+## 📦 Como rodar o projeto
+
+```bash
+# Clone o repositório
+git clone https://github.com/thalitasilva620/react-product-catalog
+
+# Acesse a pasta
+cd react-product-catalog
+
+# Instale as dependências
+npm install
+
+# Rode o projeto
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 📁 Estrutura do projeto
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+src/
+ ├── components/
+ ├── hooks/
+ ├── pages/
+ ├── styles/
+ └── App.tsx
+```
+
+---
+
+## 🎯 Aprendizados
+
+Durante o desenvolvimento deste projeto, aprimorei conhecimentos em:
+
+* Manipulação de dados vindos de APIs
+* Boas práticas com React
+* Organização de componentes reutilizáveis
+* Estilização com TailwindCSS
+
+---
+
+## 📌 Próximos passos
+
+* [ ] Implementar modal de detalhes do produto
+* [ ] Adicionar skeleton loading
+* [ ] Criar carrinho de compras
+* [ ] Melhorar acessibilidade
+
+---
+
+## 👩‍💻 Autora
+
+Desenvolvido por **Thalita Silva**
+
+🔗 [LinkedIn](https://www.linkedin.com/in/thalita-silva687)
+
+---
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT.
+
