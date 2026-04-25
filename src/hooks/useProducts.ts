@@ -14,6 +14,7 @@ export const useProducts = () => {
     const [loading, setLoading] = useState(true);
     const [search, setSearch] = useState("");
     const [category, setCategory] = useState("all");
+    const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
     const categories = ["all", ...new Set(products.map(p => p.category))];
 
@@ -42,6 +43,6 @@ export const useProducts = () => {
         category === "all" ? true : product.category === category
     );
 
-    return { products, filteredProducts, loading, category, setCategory, categories, search, setSearch };
+    return { products, filteredProducts, loading, category, setCategory, categories, search, setSearch, selectedProduct, setSelectedProduct };
 
 }

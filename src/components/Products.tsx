@@ -3,7 +3,7 @@ import { ProductCard } from "./ProductCard";
 
 export const Products = () => {
 
-    const { products, loading, search, setSearch, category, setCategory, categories } = useProducts();
+    const { products, loading, search, setSearch, category, setCategory, categories, selectedProduct, setSelectedProduct } = useProducts();
 
     if (loading) {
         return <p>Carregando produtos...</p>
@@ -40,20 +40,47 @@ export const Products = () => {
 
                         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
                             {products.map(product => (
-                                <ProductCard key={product.id} product={product} />
+                                <ProductCard key={product.id} product={product} onSelect={setSelectedProduct} />
                             ))}
                         </div>
-
-
                     </div>
                 </div>
-
-
-
-
-
-
             </div>
+
+            {
+                selectedProduct && (
+                    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
+
+                        <div className="bg-white rounded-xl p-6 max-w-md w-full relative">
+
+                            <button
+                                onClick={() => setSelectedProduct(null)}
+                                className="absolute top-2 right-2"
+                            >
+                                ✕
+                            </button>
+
+                            <img
+                                src={selectedProduct.image}
+                                className="w-full h-40 object-contain"
+                            />
+
+                            <h2 className="font-bold mt-4">
+                                {selectedProduct.title}
+                            </h2>
+
+                            <p className="mt-2 text-gray-600">
+                                {selectedProduct.description}
+                            </p>
+
+                            <p className="mt-4 font-bold">
+                                R${selectedProduct.price}
+                            </p>
+
+                        </div>
+                    </div>
+                )
+            };
         </>
     )
 }
