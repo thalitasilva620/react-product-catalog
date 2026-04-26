@@ -25,7 +25,7 @@ export const Products = () => {
                         <p className="text-gray-500 m-3">Explore produtos incríveis com filtros dinâmicos</p>
 
                         <div className="bg-white p-4 rounded-xl shadow-md flex flex-colmd:flex-row gap-4 mb-10">
-                            <input type="text" placeholder="Search products..." value={search} onChange={(e) => setSearch(e.target.value)} className="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black" />
+                            <input type="text" placeholder="Search products..." value={search} onChange={(e) => setSearch(e.target.value)} className="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black transition" />
 
                             <select value={category} onChange={(e) => setCategory(e.target.value)} className="px-4 py-2 border rounded-lg">
                                 {categories.map((category: string) => (
