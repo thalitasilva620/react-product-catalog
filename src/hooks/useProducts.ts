@@ -23,6 +23,9 @@ export const useProducts = () => {
             try {
                 const response = await fetch('https://fakestoreapi.com/products');
                 const data = await response.json();
+
+                await new Promise(resolve => setTimeout(resolve, 2000));
+                
                 setProducts(data);
             } catch (error) {
                 console.log("error fetching products:", error);

@@ -1,12 +1,17 @@
 import { useProducts } from "../hooks/useProducts";
 import { ProductCard } from "./ProductCard";
+import { Skeleton } from "./Skeleton";
 
 export const Products = () => {
 
     const { products, loading, search, setSearch, category, setCategory, categories, selectedProduct, setSelectedProduct } = useProducts();
 
     if (loading) {
-        return <p>Carregando produtos...</p>
+        return (
+            <div>{Array.from({ length: 8 }).map((_, index) => (
+                <Skeleton key={index} />
+            ))}</div>
+        )
     } else {
         products.length === 0 && <p>Nenhum produto encontrado.</p>
     }
