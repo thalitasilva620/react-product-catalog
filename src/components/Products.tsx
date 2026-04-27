@@ -4,7 +4,7 @@ import { Skeleton } from "./Skeleton";
 
 export const Products = () => {
 
-    const { products, loading, search, setSearch, category, setCategory, categories, selectedProduct, setSelectedProduct } = useProducts();
+    const { products, loading, search, setSearch, query, setQuery, category, setCategory, categories, selectedProduct, setSelectedProduct } = useProducts();
 
     if (loading) {
         return (
@@ -12,20 +12,33 @@ export const Products = () => {
                 <Skeleton key={index} />
             ))}</div>
         )
-    } else {
-        products.length === 0 && <p>Nenhum produto encontrado.</p>
     }
-
+    
     return (
         <>
             <div className="max-w-7xl mx-auto py-5 px-4">
-                <div className="min-h-screen bg-gradient-to-br rounded-sm from-gray-100 to-gray-200 ">
+                <div className="min-h-screen bg-linear-to-br rounded-sm from-gray-100 to-gray-200 ">
                     <div className="m-5 ">
                         <h1 className="text-4xl font-extrabold p-3 text-gray-800">Catálogo de produtos</h1>
                         <p className="text-gray-500 m-3">Explore produtos incríveis com filtros dinâmicos</p>
 
                         <div className="bg-white p-4 rounded-xl shadow-md flex flex-colmd:flex-row gap-4 mb-10">
-                            <input type="text" placeholder="Search products..." value={search} onChange={(e) => setSearch(e.target.value)} className="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black transition" />
+                            <input
+                                type="text"
+                                id="search"
+                                name="search"
+                                placeholder="Search products..."
+                                value={search} onChange={(e) => setSearch(e.target.value)}
+                                onKeyDown={(e) => {
+                                    if (e.key === "Enter") {
+                                        setQuery(search);
+                                    }
+                                }}
+                                className="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black transition" />
+
+                            <button onClick={() => setQuery(search)} className="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition">
+                                Buscar
+                            </button>
 
                             <select value={category} onChange={(e) => setCategory(e.target.value)} className="px-4 py-2 border rounded-lg">
                                 {categories.map((category: string) => (
@@ -51,6 +64,12 @@ export const Products = () => {
                     </div>
                 </div>
             </div>
+
+            {products.length === 0 && (
+                <p className="text-center text-gray-500">
+                Nenhum produto encontrado.
+                </p>
+            )}
 
             {
                 selectedProduct && (

@@ -14,7 +14,12 @@ const categoryStyles: Record<string, string> = {
   "eletronics": "bg-green-100 text-green-700",
 };
 
-export const ProductCard = ({ product, onSelect }) => {
+interface ProductCardProps {
+  product: Product;
+  onSelect: (product: Product) => void;
+}
+  
+export const ProductCard = ({ product, onSelect }: ProductCardProps) => {
 
   return (
     <>
