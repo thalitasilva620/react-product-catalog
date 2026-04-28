@@ -16,10 +16,26 @@ export const useProducts = () => {
     const [query, setQuery] = useState<string>("");
     const [category, setCategory] = useState("all");
     const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+    const [currentPage, setCurrentPage] = useState(1);
+    const productsPerPage = 6;
+
+    const filteredProducts = products
+    .filter(product => 
+       product.title.toLowerCase().includes(query.toLowerCase())
+    )
+    .filter(product =>
+        category === "all" ? true : product.category === category
+    );
+
+    const startIndex = (currentPage - 1) * productsPerPage;
+    const paginatedProducts = filteredProducts.slice(startIndex, startIndex + productsPerPage);
+
+    const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
 
     const categories = ["all", ...new Set(products.map(p => p.category))];
 
     useEffect(() => {
+        setCurrentPage(1);
         const fetchProducts = async () => {
             try {
                 const response = await fetch('https://fakestoreapi.com/products');
@@ -37,16 +53,8 @@ export const useProducts = () => {
         }
 
         fetchProducts();
-    }, []);
+    }, [query, category]);
 
-    const filteredProducts = products
-    .filter(product => 
-       product.title.toLowerCase().includes(query.toLowerCase())
-    )
-    .filter(product =>
-        category === "all" ? true : product.category === category
-    );
-
-    return { products: filteredProducts, loading, category, setCategory, categories, search, setSearch, query, setQuery, selectedProduct, setSelectedProduct };
+    return { products: paginatedProducts, loading, category, setCategory, categories, search, setSearch, query, setQuery, selectedProduct, setSelectedProduct, currentPage, setCurrentPage, totalPages };
 
 }

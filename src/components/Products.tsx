@@ -1,23 +1,27 @@
 import { useProducts } from "../hooks/useProducts";
 import { ProductCard } from "./ProductCard";
 import { Skeleton } from "./Skeleton";
+import { useState } from "react";
 
 export const Products = () => {
 
     const { products, loading, search, setSearch, query, setQuery, category, setCategory, categories, selectedProduct, setSelectedProduct } = useProducts();
+    const [currentPage, setCurrentPage] = useState(1);
+    const itemsPerPage = 4;
+    const totalPages = Math.ceil(products.length / itemsPerPage);
 
     if (loading) {
         return (
-            <div>{Array.from({ length: 8 }).map((_, index) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 p-6">{Array.from({ length: 8 }).map((_, index) => (
                 <Skeleton key={index} />
             ))}</div>
         )
     }
-    
+
     return (
         <>
             <div className="max-w-7xl mx-auto py-5 px-4">
-                <div className="min-h-screen bg-linear-to-br rounded-sm from-gray-100 to-gray-200 ">
+                <div className="gridmin-h-screen bg-linear-to-br rounded-sm from-gray-100 to-gray-200 animated-fadeIn">
                     <div className="m-5 ">
                         <h1 className="text-4xl font-extrabold p-3 text-gray-800">Catálogo de produtos</h1>
                         <p className="text-gray-500 m-3">Explore produtos incríveis com filtros dinâmicos</p>
@@ -63,6 +67,28 @@ export const Products = () => {
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div className="flex items-center justify-center gap-4 mt-10">
+                <button
+                    onClick={() => setCurrentPage(prev => prev - 1)}
+                    disabled={currentPage === 1}
+                    className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50"
+                >
+                    Anterior
+                </button>
+
+                <span className="font-medium">
+                    Página {currentPage} de {totalPages}
+                </span>
+
+                <button
+                    onClick={() => setCurrentPage(prev => prev + 1)}
+                    disabled={currentPage === totalPages}
+                    className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50"
+                >
+                    Próxima
+                </button>
             </div>
 
             {products.length === 0 && (
