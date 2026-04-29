@@ -39,7 +39,7 @@ export const Products = () => {
                                         setQuery(search);
                                     }
                                 }}
-                                className="flex-1 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black transition" />
+                                className="flex-1 min-w-0 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black transition" />
 
                             <button onClick={() => setQuery(search)} className="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition">
                                 Buscar
