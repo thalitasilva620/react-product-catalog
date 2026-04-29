@@ -5,10 +5,11 @@ import { useState } from "react";
 
 export const Products = () => {
 
-    const { products, loading, search, setSearch, query, setQuery, category, setCategory, categories, selectedProduct, setSelectedProduct } = useProducts();
+    const { products, loading, search, setSearch, setQuery, category, setCategory, categories, selectedProduct, setSelectedProduct } = useProducts();
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 4;
     const totalPages = Math.ceil(products.length / itemsPerPage);
+    const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
     if (loading) {
         return (
@@ -75,25 +76,40 @@ export const Products = () => {
                     disabled={currentPage === 1}
                     className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50"
                 >
-                    Anterior
+                    {"<<"}
                 </button>
 
-                <span className="font-medium">
-                    Página {currentPage} de {totalPages}
-                </span>
+                {pages.map(page => (
+                    <button
+                        key={page}
+                        onClick={() => setCurrentPage(page)}
+                        className={`px-4 py-2 rounded font-medium transition ${currentPage === page 
+                            ? "bg-black text-white" 
+                            : "bg-white border hover:bg-gray-100"
+                        }`}
+                    >
+                        {page}
+                    </button>
+                ))}
 
                 <button
                     onClick={() => setCurrentPage(prev => prev + 1)}
                     disabled={currentPage === totalPages}
                     className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50"
                 >
-                    Próxima
+                   {">>"}
                 </button>
+
+                {totalPages > 1 && (
+                    <div className="flex justify-center ...">
+                        ...
+                    </div>
+                )}
             </div>
 
             {products.length === 0 && (
                 <p className="text-center text-gray-500">
-                Nenhum produto encontrado.
+                    Nenhum produto encontrado.
                 </p>
             )}
 
