@@ -41,7 +41,7 @@ export const ProductCard = ({ product, onSelect }: ProductCardProps) => {
           <span className="text-lg font-bold text-gray-900"> R${product.price.toFixed(2)}</span>
         </div>
 
-        <button onClick={() => onSelect(product)} className="bg-black text-white text-sm py-2 rounded-lg hover:bg-gray-800 hover:scale-105 active:scale-95 transition">Ver</button>
+        <button onClick={() => onSelect(product)} className="bg-black text-white text-sm py-2 rounded-lg hover:bg-gray-800 hover:scale-105 active:scale-95 cursor-pointer transition">Ver</button>
       </div>
     </>
   )

@@ -41,7 +41,7 @@ export const Products = () => {
                                 }}
                                 className="flex-1 min-w-0 px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-black transition" />
 
-                            <button onClick={() => setQuery(search)} className="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition">
+                            <button onClick={() => setQuery(search)} className="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 cursor-pointer transition">
                                 Buscar
                             </button>
 
@@ -56,7 +56,7 @@ export const Products = () => {
                             <button onClick={() => {
                                 setSearch("");
                                 setCategory("all");
-                            }} className="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 transition">
+                            }} className="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800 cursor-pointer transition">
                                 Limpar
                             </button>
                         </div>
@@ -74,7 +74,7 @@ export const Products = () => {
                 <button
                     onClick={() => setCurrentPage(prev => prev - 1)}
                     disabled={currentPage === 1}
-                    className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50"
+                    className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50 cursor-pointer transition"
                 >
                     {"<<"}
                 </button>
@@ -85,7 +85,7 @@ export const Products = () => {
                         onClick={() => setCurrentPage(page)}
                         className={`px-4 py-2 rounded font-medium transition ${currentPage === page 
                             ? "bg-black text-white" 
-                            : "bg-white border hover:bg-gray-100"
+                            : "bg-white border hover:bg-gray-100 cursor-pointer"
                         }`}
                     >
                         {page}
@@ -95,13 +95,13 @@ export const Products = () => {
                 <button
                     onClick={() => setCurrentPage(prev => prev + 1)}
                     disabled={currentPage === totalPages}
-                    className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50"
+                    className="px-4 py-2 bg-gray-200 rounded disabled:opacity-50 cursor-pointer transition"
                 >
                    {">>"}
                 </button>
 
                 {totalPages > 1 && (
-                    <div className="flex justify-center ...">
+                    <div className="flex justify-center">
                         ...
                     </div>
                 )}
